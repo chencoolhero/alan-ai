@@ -1,0 +1,17 @@
+var products = ["iphone|oneplus|6|pixel|nikon|sony|macbook|air|huawei|beef|pork|chicken|turkey|broccoli|cauliflower|onions|spinach|celery|oranges|electronics|groceries"];
+
+intent(`What aisle is $(item ${products})`, p => {
+   p.play({command: "aisle", value: p.item.value});
+});   
+intent(`What price is $(item ${products})`, `How much does $(item ${products})`, p => {
+   p.play({command: "prices", value: p.item.value});
+});   
+intent(`What items are in $(item ${products})`, p => {
+   p.play({command: "category", value: p.item.value});
+});   
+intent(`Change $(item ${products}) stock to $(NUMBER)`, p => {
+    p.play({command:"change", value: p.item.value, stock: p.NUMBER.number})});
+intent(`How much $(item ${products}) in stock`, p => {
+    // return stock number
+    p.play({command:'stock', value: p.item.value});
+});
