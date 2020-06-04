@@ -127,7 +127,7 @@ class MyButtonState extends State<MyButton> {
         break;
       case "prices":
         var priceVal = await sheet.values.value(column: 5, row: rowNum);
-        AlanVoice.playText(command["value"] + " costs " + priceVal);
+        AlanVoice.playText(command["value"] + " costs " + priceVal + "dollars.");
         break;
       case "category":
         int rows = 2;
@@ -148,9 +148,11 @@ class MyButtonState extends State<MyButton> {
         }
         break;
       case "change":
-        print('fsdsdssfsf');
-        int quantity = command["stock"];
+        var quantity = command["stock"];
+
         await sheet.values.insertValue(quantity, column: 4, row: rowNum);
+        AlanVoice.playText(command["value"] + "stock has been changed to " + quantity.toString());
+
         break;
       case "stock":
         var stockVal = await sheet.values.value(column: 4, row: rowNum);
